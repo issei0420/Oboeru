@@ -26,13 +26,13 @@ app.post('/add_word', (req, res) => {
     console.log(req.body.questionName);
     console.log(req.body.answereName);
     //追加画面を表示する処理
-    // res.render('add/ejs');
-    connection.query(
-        'select * from list',
-        (error, results) => {
-            res.render('index.ejs', {list: results});
-        }
-    )
+    res.render('add.ejs');
+    // connection.query(
+    //     'select * from list',
+    //     (error, results) => {
+    //         res.render('index.ejs', {list: results});
+    //     }
+    // )
 });
 
 app.get('/index', (req, res) => {
