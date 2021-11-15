@@ -24,7 +24,9 @@ app.get('/add', (req, res) => {
 app.post('/add_word', (req, res) => {
     //追加された単語を出力
     console.log(req.body.questionName);
-    //単語リストを表示する処理
+    console.log(req.body.answereName);
+    //追加画面を表示する処理
+    // res.render('add/ejs');
     connection.query(
         'select * from list',
         (error, results) => {
