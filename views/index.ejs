@@ -8,11 +8,15 @@
 </head>
 <body>
     <h1>index</h1>
+  <% list.forEach((word) => { %>
+    <ul>
+        <li>
+            <span><%= word.question%></span>
+            <span><%= word.answere%></span>
+        </li>
+    </ul>
 
-    <li>
-        <span><%= list[0].question%></span>
-        <span><%= list[0].answere%></span>
-    </li>
+ <% }); %>
 
     <a href="/">
         トップページ
