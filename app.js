@@ -26,8 +26,8 @@ app.post('/add_word', (req, res) => {
     // console.log(req.body.questionName);
     // console.log(req.body.answereName);
     connection.query(
-        'insert into list(question) values(?)',
-        [req.body.questionName],
+        'insert into list(question, answere) values(?, ?)',
+        [req.body.questionName, req.body.answereName],
         (error, results) => {
             res.render('add.ejs');
         }
