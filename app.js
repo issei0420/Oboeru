@@ -25,15 +25,14 @@ app.post('/add_word', (req, res) => {
     //追加された単語を出力
     // console.log(req.body.questionName);
     // console.log(req.body.answereName);
-
     connection.query(
-        'insert into list(question, answere) values(?,?)',
+        'insert into list(question) values(?)',
         [req.body.questionName],
-        [req.body.answereName],
         (error, results) => {
             res.render('add.ejs');
         }
     );
+    // res.render('add.ejs');
 });
 
 app.get('/index', (req, res) => {
