@@ -29,10 +29,20 @@ app.post('/add_word', (req, res) => {
         'insert into list(question, answere) values(?, ?)',
         [req.body.questionName, req.body.answereName],
         (error, results) => {
-            res.render('add.ejs');
+            res.redirect('/add');
         }
     );
     // res.render('add.ejs');
+});
+
+app.post('/delete/:id', (req, res) => {
+    connection.query(
+        'delete from list where id = ?',
+        [req.params.id],
+        (error, results) => {
+            res.redirect('/index');
+        }
+    );
 });
 
 app.get('/index', (req, res) => {

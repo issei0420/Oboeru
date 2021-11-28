@@ -13,13 +13,16 @@
         <li>
             <span><%= word.question%></span>
             <span><%= word.answere%></span>
+            <form action="/delete/<%=word.id%>", method="post">
+                <input type="submit", value="削除">
+            </form>
         </li>
     </ul>
 
  <% }); %>
 
     <a href="/">
-        トップページ
+        表紙へ
     </a>
     
 </body>
