@@ -23,16 +23,17 @@ app.get('/add', (req, res) => {
 
 app.post('/add_word', (req, res) => {
     //追加された単語を出力
-    console.log(req.body.questionName);
-    console.log(req.body.answereName);
-    //追加画面を表示する処理
-    res.render('add.ejs');
-    // connection.query(
-    //     'select * from list',
-    //     (error, results) => {
-    //         res.render('index.ejs', {list: results});
-    //     }
-    // )
+    // console.log(req.body.questionName);
+    // console.log(req.body.answereName);
+
+    connection.query(
+        'insert into list(question, answere) values(?,?)',
+        [req.body.questionName],
+        [req.body.answereName],
+        (error, results) => {
+            res.render('add.ejs');
+        }
+    );
 });
 
 app.get('/index', (req, res) => {
