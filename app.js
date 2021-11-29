@@ -22,9 +22,7 @@ app.get('/add', (req, res) => {
 });
 
 app.post('/add_word', (req, res) => {
-    //追加された単語を出力
-    // console.log(req.body.questionName);
-    // console.log(req.body.answereName);
+    
     connection.query(
         'insert into list(question, answere) values(?, ?)',
         [req.body.questionName, req.body.answereName],
@@ -32,9 +30,9 @@ app.post('/add_word', (req, res) => {
             res.redirect('/add');
         }
     );
-    // res.render('add.ejs');
 });
 
+// 削除処理
 app.post('/delete/:id', (req, res) => {
     connection.query(
         'delete from list where id = ?',
@@ -44,6 +42,20 @@ app.post('/delete/:id', (req, res) => {
         }
     );
 });
+
+// 編集画面表示
+app.get('/edit/:id', (req, res) => {
+    connection.query(
+        'select * from list where id=?',
+        [req.params.id],
+    (error, results)  => {
+        console.log(results)
+        res.render('edit.ejs', {word:results[0]});
+     }
+    );
+});
+
+
 
 app.get('/index', (req, res) => {
     connection.query(
