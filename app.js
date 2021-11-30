@@ -55,6 +55,17 @@ app.get('/edit/:id', (req, res) => {
     );
 });
 
+//更新処理
+app.post('/update/:id', (req, res) => {
+    connection.query(
+        'update list set question = ?, answere = ? where id = ?',
+        [req.body.questionName, req.body.answereName, req.params.id],
+        (error, results) => {
+          res.redirect('/index');
+        }
+      );
+})
+
 
 
 app.get('/index', (req, res) => {
