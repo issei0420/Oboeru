@@ -83,7 +83,12 @@ app.get('/index', (req, res) => {
 );
 
 app.get('/test', (req, res) => {
-    res.render('test.ejs');
+    connection.query(
+        'select * from list where id=1',
+        (error, results) => {
+            res.render('test.ejs', {word: results[0]});
+        }
+    )
 });
 
 app.listen(3000);
