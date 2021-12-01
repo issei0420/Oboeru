@@ -7,10 +7,11 @@ app.use(express.urlencoded({extended: false}));
 const mysql = require('mysql');
 
 const connection = mysql.createConnection({
+    multipleStatements: true,
     host: 'localhost',
     user: 'root',
     password: 'goalie31',
-    database: 'oboeru'
+    database: 'oboeru',
   });
 
 app.get('/', (req, res) => {
@@ -82,11 +83,26 @@ app.get('/index', (req, res) => {
   }
 );
 
+//テスト機能
+let counter = 1;
 app.get('/test', (req, res) => {
+    console.log(counter);
     connection.query(
-        'select * from list where id=1',
+        'select * from list limit ?, ?',
+        [counter-1, counter],
         (error, results) => {
             res.render('test.ejs', {word: results[0]});
+            // list_length = results[1].count(quesiton);
+            // console.log(results[1]);
+            counter += 1;
+        }
+    );
+
+    connection.query(
+        'select count(question) from list',
+        (error, results) => {
+            console.log(results[0]);
+            
         }
     )
 });
