@@ -14,7 +14,11 @@ const connection = mysql.createConnection({
   });
 
 app.get('/', (req, res) => {
-    res.render('top.ejs');
+    res.render('top.ejs')
+})
+
+app.get('/front', (req, res) => {
+    res.render('front.ejs');
 });
 
 app.get('/add', (req, res) => {
