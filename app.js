@@ -86,25 +86,33 @@ app.get('/index', (req, res) => {
 //テスト機能
 let counter = 1;
 app.get('/test', (req, res) => {
+    let length;
+    
     console.log(counter);
+
+    connection.query(
+        'select count(question), count(answere) from list',
+        (error, results) => {
+            length = results[0]['count(question)'];
+            console.log(length);
+        }
+    )
+
     connection.query(
         'select * from list limit ?, ?',
         [counter-1, counter],
         (error, results) => {
-            res.render('test.ejs', {word: results[0]});
-            // list_length = results[1].count(quesiton);
-            // console.log(results[1]);
-            counter += 1;
+            if(counter<=length){
+                res.render('test.ejs', {word: results[0]});
+                counter += 1;
+            }else{
+                res.render('front.ejs');
+                counter = 0;
+            }
         }
     );
 
-    connection.query(
-        'select count(question) from list',
-        (error, results) => {
-            console.log(results[0]);
-            
-        }
-    )
+    
 });
 
 app.listen(3000);
