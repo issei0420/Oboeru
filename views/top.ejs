@@ -8,15 +8,16 @@
 </head>
 <body>
     <h1>Oboeru</h1>
-    <p><a href="/front"><%=note[0]['Tables_in_oboeru']%></a></p>
-    <p><a href="/front"><%=note[1]['Tables_in_oboeru']%></a></p>
-    <!-- <a href="/addNote">ノートを追加</a> -->
 
+    <% note.forEach((list) => {%>
+        <p><a href="/front"><%=list.Tables_in_oboeru%></a></p>
+    <% }); %>
+    
     <form action="/add_note", method="post">
-        <!-- <input type="text", name="noteName"> -->
+        
         <input type="submit" value="ノートを追加">
     </form> 
 
-
 </body>
 </html>
+

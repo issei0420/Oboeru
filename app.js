@@ -28,9 +28,9 @@ app.get('/', (req, res) => {
 })
 
 //ノート追加画面
- app.get('/addNote', (req, res) => {
-     res.render('addNote.ejs');
- })
+//  app.get('/addNote', (req, res) => {
+//      res.render('addNote.ejs');
+//  })
 
 
 //ノート追加機能
