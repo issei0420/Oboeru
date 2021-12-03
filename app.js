@@ -14,18 +14,32 @@ const connection = mysql.createConnection({
     database: 'oboeru',
   });
 
+//トップページ
 app.get('/', (req, res) => {
     res.render('top.ejs')
 })
 
+//ノート表紙
 app.get('/front', (req, res) => {
     res.render('front.ejs');
 });
+//一覧画面
+app.get('/index', (req, res) => {
+    connection.query(
+        'select * from list',
+        (error, results) => {
+            res.render('index.ejs', {list: results});
+        }
+    )
+  }
+);
 
+//追加画面
 app.get('/add', (req, res) => {
     res.render('add.ejs');
 });
 
+//追加処理
 app.post('/add_word', (req, res) => {
     
     connection.query(
@@ -71,32 +85,18 @@ app.post('/update/:id', (req, res) => {
       );
 })
 
-
-
-app.get('/index', (req, res) => {
-    connection.query(
-        'select * from list',
-        (error, results) => {
-            res.render('index.ejs', {list: results});
-        }
-    )
-  }
-);
-
 //テスト機能
 let counter = 1;
 app.get('/test', (req, res) => {
     let length;
-    
-    console.log(counter);
+
 
     connection.query(
-        'select count(question), count(answere) from list',
-        (error, results) => {
-            length = results[0]['count(question)'];
-            console.log(length);
-        }
-    )
+            'select count(question), count(answere) from list',
+            (error, results) => {
+                length = results[0]['count(question)'];
+            }
+        )
 
     connection.query(
         'select * from list limit ?, ?',
