@@ -36,8 +36,7 @@ app.get('/', (req, res) => {
 //ノート追加機能
 app.post('/add_note', (req, res) => {
     connection.query(
-        'create table ? word answere',
-        [req.body.noteName],
+        'create table new_list word answere',
         (error, results) => {
             res.redirect('/');
         }
