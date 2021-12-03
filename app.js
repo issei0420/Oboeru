@@ -16,7 +16,24 @@ const connection = mysql.createConnection({
 
 //トップページ
 app.get('/', (req, res) => {
-    res.render('top.ejs')
+    connection.query(
+        'show tables',
+        (error, results) => {
+            res.render('top.ejs', {note: results[0]});
+            console.log(results[0]);
+        }
+    )
+})
+
+//ノート追加画面
+ app.get('/addNote', (req, res) => {
+     res.render('addNote.ejs');
+ })
+
+
+//ノート追加機能
+app.post('/add_note', (req, res) => {
+    res.render('top.ejs', {note: req.body.noteName});
 })
 
 //ノート表紙
@@ -34,12 +51,12 @@ app.get('/index', (req, res) => {
   }
 );
 
-//追加画面
+//単語追加画面
 app.get('/add', (req, res) => {
     res.render('add.ejs');
 });
 
-//追加処理
+//単語追加処理
 app.post('/add_word', (req, res) => {
     
     connection.query(
@@ -63,7 +80,7 @@ app.post('/delete/:id', (req, res) => {
 });
 
 // 編集画面表示
-app.get('/edit/:id', (req, res) => {
+app.get('/edit/:id', (req, res) => {l
     connection.query(
         'select * from list where id=?',
         [req.params.id],

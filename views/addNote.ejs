@@ -7,11 +7,11 @@
     <title>Document</title>
 </head>
 <body>
-    　<h1>Oboeru</h1>
-    <p><a href="/front"><%=note['Tables_in_oboeru']%></a></p>
-    <a href="/addNote">ノートを追加</a>
-
-
+    
+    <form action="/add_note", method="post">
+        <input type="text", name="noteName">
+        <input type="submit" value="追加">
+    </form> 
 
 </body>
 </html>
