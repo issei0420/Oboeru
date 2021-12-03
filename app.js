@@ -19,8 +19,10 @@ app.get('/', (req, res) => {
     connection.query(
         'show tables',
         (error, results) => {
-            res.render('top.ejs', {note: results[0]});
+            res.render('top.ejs', {note: results});
+            console.log(results);
             console.log(results[0]);
+            console.log(results[1]);
         }
     )
 })
@@ -33,7 +35,13 @@ app.get('/', (req, res) => {
 
 //ノート追加機能
 app.post('/add_note', (req, res) => {
-    res.render('top.ejs', {note: req.body.noteName});
+    connection.query(
+        'create table ? word answere',
+        [req.body.noteName],
+        (error, results) => {
+            res.redirect('/');
+        }
+    )
 })
 
 //ノート表紙
