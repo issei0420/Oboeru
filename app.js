@@ -36,7 +36,7 @@ app.get('/', (req, res) => {
 //ノート追加機能
 app.post('/add_note', (req, res) => {
     connection.query(
-        'create table new_list word answere',
+        'create table new_list( question text, answere text)',
         (error, results) => {
             res.redirect('/');
         }
@@ -116,9 +116,10 @@ app.get('/test', (req, res) => {
 
 
     connection.query(
-            'select count(question), count(answere) from list',
+        'select count(question), count(answere) from list',
             (error, results) => {
                 length = results[0]['count(question)'];
+                console.log(length);
             }
         )
 
