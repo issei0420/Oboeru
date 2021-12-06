@@ -58,11 +58,16 @@ app.get('/delete_note/:listName', (req, res) => {
     )
 })
 
+//ノート追加画面
+app.get('/add_note', (req, res) => {
+    res.render('note_name.ejs', {name: req.params.listName});
+})
 
 //ノート追加機能
-app.post('/add_note', (req, res) => {
+app.post('/add_function', (req, res) => {
     connection.query(
-        'create table new_list( question text, answere text)',
+        'create table ??( question text, answere text)',
+        [req.body.listName],
         (error, results) => {
             res.redirect('/');
         }
