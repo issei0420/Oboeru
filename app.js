@@ -59,7 +59,7 @@ app.get('/add_note', (req, res) => {
 //ノート追加機能
 app.post('/add_function', (req, res) => {
     connection.query(
-        'create table ??( question text, answere text)',
+        'create table ??(id int auto_increment, question text, answere text, primary key(id))',
         [req.body.listName],
         (error, results) => {
             res.redirect('/');
@@ -77,6 +77,8 @@ app.get('/index/:listName', (req, res) => {
         'select * from ??',
         [req.params.listName],
         (error, results) => {
+            console.log(req.params.listName)
+            console.log(results);
             res.render('index.ejs', {list: results});
         }
     )
@@ -142,7 +144,7 @@ app.get('/test/:listName', (req, res) => {
 
     connection.query(
         'select count(question), count(answere) from ??',
-        [req.params.questionName],
+        [req.params.listName],
         (error, results) => {
                 length = results[0]['count(question)'];
                 console.log(length);
