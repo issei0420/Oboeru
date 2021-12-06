@@ -20,17 +20,38 @@ app.get('/', (req, res) => {
         'show tables',
         (error, results) => {
             res.render('top.ejs', {note: results});
-            console.log(results);
-            console.log(results[0]);
-            console.log(results[1]);
+            // console.log(results);
+            // console.log(results[0]);
+            // console.log(results[1]);
         }
     )
 })
 
-//ノート追加画面
-//  app.get('/addNote', (req, res) => {
-//      res.render('addNote.ejs');
-//  })
+//ノート名変更画面
+app.get('/change_name/:listName', (req, res) => {
+    console.log(req.params.listName);
+    res.render('change_name.ejs');
+    // connection.query(
+    //     'use ??',
+    //     [req.params.listName],
+    // (error, results)  => {
+    //     console.log(results)
+    //     res.redirect('/');
+    //  }
+    // );
+});
+
+//ノート削除
+app.get('/delete_note/:listName', (req, res) => {
+    connection.query(
+        'drop table ?? ',
+        [req.params.listName],
+        (error, results) => {
+            console.log(req.params.listName)
+            res.redirect('/');
+        }
+    )
+})
 
 
 //ノート追加機能

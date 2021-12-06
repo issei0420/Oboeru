@@ -11,12 +11,24 @@
 
     <% note.forEach((list) => {%>
         <p><a href="/front"><%=list.Tables_in_oboeru%></a></p>
+        <span>
+            <form action="/change_name/<%=list.Tables_in_oboeru%>">
+                <input type="submit", value="名前変更">
+            </form>
+            <form action="/delete_note/<%=list.Tables_in_oboeru%>">
+                <input type="submit", value="削除">
+            </form>
+        </span>
     <% }); %>
     
-    <form action="/add_note", method="post">
-        
-        <input type="submit" value="ノートを追加">
-    </form> 
+    
+        <p>
+            <form action="/add_note", method="post">
+            
+                <input type="submit" value="ノートを追加">
+            </form>
+        </p>
+
 
 </body>
 </html>
