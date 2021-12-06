@@ -9,7 +9,7 @@
 <body>
     <h1>add</h1>
 
-    <form action="/add_word", method="post">
+    <form action="/add_word/<%=list%>", method="post">
         <p>
             <input type="text", name='questionName'>
         </p>
@@ -22,7 +22,7 @@
 
     </form>
     
-    <a href="/front">
+    <a href="/front/<%=list%>">
         表紙へ
     </a>
 </body>

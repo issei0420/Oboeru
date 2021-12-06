@@ -20,16 +20,12 @@ app.get('/', (req, res) => {
         'show tables',
         (error, results) => {
             res.render('top.ejs', {note: results});
-            // console.log(results);
-            // console.log(results[0]);
-            // console.log(results[1]);
         }
     )
 })
 
 //ノート名変更画面
 app.get('/change_name/:listName', (req, res) => {
-    // console.log(req.params.listName);
     res.render('change_name.ejs', {name: req.params.listName});
 });
 
@@ -39,8 +35,6 @@ app.post('/change_function/:listName', (req, res) => {
         'rename table ?? to ??',
         [req.params.listName, req.body.newName],
         (error, results) => {
-            console.log(req.params.listName);
-            console.log(req.body.newName);
             res.redirect('/');
         }
     )
@@ -52,7 +46,6 @@ app.get('/delete_note/:listName', (req, res) => {
         'drop table ?? ',
         [req.params.listName],
         (error, results) => {
-            console.log(req.params.listName)
             res.redirect('/');
         }
     )
@@ -60,7 +53,7 @@ app.get('/delete_note/:listName', (req, res) => {
 
 //ノート追加画面
 app.get('/add_note', (req, res) => {
-    res.render('note_name.ejs', {name: req.params.listName});
+    res.render('note_name.ejs');
 })
 
 //ノート追加機能
@@ -75,13 +68,14 @@ app.post('/add_function', (req, res) => {
 })
 
 //ノート表紙
-app.get('/front', (req, res) => {
-    res.render('front.ejs');
+app.get('/front/:listName', (req, res) => {
+    res.render('front.ejs', {list: req.params.listName});
 });
 //一覧画面
-app.get('/index', (req, res) => {
+app.get('/index/:listName', (req, res) => {
     connection.query(
-        'select * from list',
+        'select * from ??',
+        [req.params.listName],
         (error, results) => {
             res.render('index.ejs', {list: results});
         }
@@ -90,38 +84,38 @@ app.get('/index', (req, res) => {
 );
 
 //単語追加画面
-app.get('/add', (req, res) => {
-    res.render('add.ejs');
+app.get('/add/:listName', (req, res) => {
+    res.render('add.ejs', {list: req.params.listName});
 });
 
 //単語追加処理
-app.post('/add_word', (req, res) => {
+app.post('/add_word/:listName', (req, res) => {
     
     connection.query(
-        'insert into list(question, answere) values(?, ?)',
-        [req.body.questionName, req.body.answereName],
+        'insert into ??(question, answere) values(?, ?)',
+        [req.params.listName, req.body.questionName, req.body.answereName],
         (error, results) => {
-            res.redirect('/add');
+            res.redirect('/add/:listname');
         }
     );
 });
 
 // 削除処理
-app.post('/delete/:id', (req, res) => {
+app.post('/delete/:id/:listName', (req, res) => {
     connection.query(
-        'delete from list where id = ?',
-        [req.params.id],
+        'delete from ?? where id = ?',
+        [req.params.listName, req.params.id],
         (error, results) => {
-            res.redirect('/index');
+            res.redirect('/index/:listname');
         }
     );
 });
 
 // 編集画面表示
-app.get('/edit/:id', (req, res) => {l
+app.get('/edit/:id/:listName', (req, res) => {l
     connection.query(
-        'select * from list where id=?',
-        [req.params.id],
+        'select * from ?? where id=?',
+        [req.params.listName, req.params.id],
     (error, results)  => {
         console.log(results)
         res.render('edit.ejs', {word:results[0]});
@@ -130,39 +124,40 @@ app.get('/edit/:id', (req, res) => {l
 });
 
 //更新処理
-app.post('/update/:id', (req, res) => {
+app.post('/update/:id/:listName', (req, res) => {
     connection.query(
-        'update list set question = ?, answere = ? where id = ?',
-        [req.body.questionName, req.body.answereName, req.params.id],
+        'update ?? set question = ?, answere = ? where id = ?',
+        [req.body.listName, req.body.questionName, req.body.answereName, req.params.id],
         (error, results) => {
-          res.redirect('/index');
+          res.redirect('/index/:listname');
         }
       );
 })
 
 //テスト機能
 let counter = 1;
-app.get('/test', (req, res) => {
+app.get('/test/:listName', (req, res) => {
     let length;
 
 
     connection.query(
-        'select count(question), count(answere) from list',
-            (error, results) => {
+        'select count(question), count(answere) from ??',
+        [req.params.questionName],
+        (error, results) => {
                 length = results[0]['count(question)'];
                 console.log(length);
             }
         )
 
     connection.query(
-        'select * from list limit ?, ?',
-        [counter-1, counter],
+        'select * from ?? limit ?, ?',
+        [req.params.listName, counter-1, counter],
         (error, results) => {
             if(counter<=length){
                 res.render('test.ejs', {word: results[0]});
                 counter += 1;
             }else{
-                res.render('front.ejs');
+                res.render('front.ejs', {list: req.params.listName});
                 counter = 0;
             }
         }

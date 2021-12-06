@@ -7,13 +7,13 @@
     <script src="/send_url.js"></script>
   </head>
   <body>
-    <form action="/update/<%=word.id%>", method="post">
+    <form action="/update/<%=word.id%>/<%=word%>", method="post">
         <p><input type="text" name="questionName" value="<%=word.question%>"></p>
         <p><input type="text" name="answereName" value="<%=word.answere%>"></p>
         <p><input type="submit" value="更新する"></p>
     </form>
     
-    <a href="/front">
+    <a href="/front/<%=word%>">
         表紙へ
     </a>
   </body>

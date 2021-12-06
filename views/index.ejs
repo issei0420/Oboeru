@@ -13,19 +13,20 @@
         <li>
             <span><%= word.question%></span>
             <span><%= word.answere%></span>
-            <form action="/delete/<%=word.id%>", method="post">
+            <form action="/delete/<%=word.id%>/<%=word%>", method="post">
                 <input type="submit", value="削除">
             </form>
 
-            <a href="/edit/<%=word.id%>">編集</a>
+            <a href="/edit/<%=word.id%>/<%=word%>">編集</a>
         </li>
     </ul>
 
- <% }); %>
-
-    <a href="/front">
+    <a href="/front/<%=word%>">
         表紙へ
     </a>
+
+ <% }); %>
+
     
 </body>
 </html>

@@ -10,7 +10,7 @@
     <h1>Oboeru</h1>
 
     <% note.forEach((list) => {%>
-        <p><a href="/front"><%=list.Tables_in_oboeru%></a></p>
+        <p><a href="/front/<%=list.Tables_in_oboeru%>"><%=list.Tables_in_oboeru%></a></p>
         <span>
             <form action="/change_name/<%=list.Tables_in_oboeru%>">
                 <input type="submit", value="名前変更">
@@ -19,6 +19,7 @@
                 <input type="submit", value="削除">
             </form>
         </span>
+        
     <% }); %>
     
     
