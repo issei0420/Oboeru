@@ -9,6 +9,13 @@
 <body>
 
     <h1>change name</h1>
-    
+
+    <form action="/change_function/<%=name%>", method="post">
+        <input type="text", name='newName' value=<%=name%>>
+        <input type="submit", value="更新する">
+
+    </form>
+
+
 </body>
 </html>

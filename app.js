@@ -29,17 +29,22 @@ app.get('/', (req, res) => {
 
 //ノート名変更画面
 app.get('/change_name/:listName', (req, res) => {
-    console.log(req.params.listName);
-    res.render('change_name.ejs');
-    // connection.query(
-    //     'use ??',
-    //     [req.params.listName],
-    // (error, results)  => {
-    //     console.log(results)
-    //     res.redirect('/');
-    //  }
-    // );
+    // console.log(req.params.listName);
+    res.render('change_name.ejs', {name: req.params.listName});
 });
+
+//名前変更処理
+app.post('/change_function/:listName', (req, res) => {
+    connection.query(
+        'rename table ?? to ??',
+        [req.params.listName, req.body.newName],
+        (error, results) => {
+            console.log(req.params.listName);
+            console.log(req.body.newName);
+            res.redirect('/');
+        }
+    )
+})
 
 //ノート削除
 app.get('/delete_note/:listName', (req, res) => {
