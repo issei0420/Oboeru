@@ -97,7 +97,7 @@ app.post('/add_word/:listName', (req, res) => {
         'insert into ??(question, answere) values(?, ?)',
         [req.params.listName, req.body.questionName, req.body.answereName],
         (error, results) => {
-            res.redirect('/add/:listname');
+            res.redirect('/add/:listname', {list: req.params.listName});
         }
     );
 });
