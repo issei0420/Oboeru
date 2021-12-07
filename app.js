@@ -79,7 +79,7 @@ app.get('/index/:listName', (req, res) => {
         (error, results) => {
             console.log(req.params.listName)
             console.log(results);
-            res.render('index.ejs', {list: results});
+            res.render('index.ejs', {list: results, list_name: req.params.listName});
         }
     )
   }
@@ -131,7 +131,7 @@ app.post('/update/:id/:listName', (req, res) => {
         'update ?? set question = ?, answere = ? where id = ?',
         [req.body.listName, req.body.questionName, req.body.answereName, req.params.id],
         (error, results) => {
-          res.redirect('/index/:listname');
+        res.redirect('/index/:listname');
         }
       );
 })
@@ -147,7 +147,6 @@ app.get('/test/:listName', (req, res) => {
         [req.params.listName],
         (error, results) => {
             length = results[0]['count(question)'];
-            console.log(length);
             }
         )
 
