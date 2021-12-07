@@ -114,7 +114,7 @@ app.post('/delete/:id/:listName', (req, res) => {
 });
 
 // 編集画面表示
-app.get('/edit/:id/:listName', (req, res) => {l
+app.get('/edit/:id/listName', (req, res) => {l
     connection.query(
         'select * from ?? where id=?',
         [req.params.listName, req.params.id],
