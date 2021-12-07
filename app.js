@@ -143,11 +143,11 @@ app.get('/test/:listName', (req, res) => {
 
 
     connection.query(
-        'select count(question), count(answere) from ??',
+        'select count(question) from ??',
         [req.params.listName],
         (error, results) => {
-                length = results[0]['count(question)'];
-                console.log(length);
+            length = results[0]['count(question)'];
+            console.log(length);
             }
         )
 
@@ -156,7 +156,7 @@ app.get('/test/:listName', (req, res) => {
         [req.params.listName, counter-1, counter],
         (error, results) => {
             if(counter<=length){
-                res.render('test.ejs', {word: results[0]});
+                res.render('test.ejs', {word: results[0], list: req.params.listName});
                 counter += 1;
             }else{
                 res.render('front.ejs', {list: req.params.listName});
