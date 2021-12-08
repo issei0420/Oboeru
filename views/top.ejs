@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Oboeru</title>
-    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/top.css" type="text/css">
 </head>
 
 <body>
@@ -14,28 +14,34 @@
         <h1>Oboeru</h1>
     </div>
 
-    <div class="container">
-        <% note.forEach((list) => {%>
-            
-        <p><a href="/front/<%=list.Tables_in_oboeru%>"><%=list.Tables_in_oboeru%></a></p>
+    <div class="main">
+        <div class="container">
+            <% note.forEach((list) => {%>
+        
+            <div class="note">
+                <p><a href="/front/<%=list.Tables_in_oboeru%>"><%=list.Tables_in_oboeru%></a></p>
         
         
-        <form action="/change_name/<%=list.Tables_in_oboeru%>">
-            <input type="submit", value="名前変更">
-        </form>
+                <form action="/change_name/<%=list.Tables_in_oboeru%>">
+                    <input type="submit", value="名前変更">
+                </form>
         
-        <form action="/delete_note/<%=list.Tables_in_oboeru%>">
-            <input type="submit", value="削除">
-        </form>
-           
+                <form action="/delete_note/<%=list.Tables_in_oboeru%>">
+                    <input type="submit", value="削除">
+                </form>
+            </div>
         
-        <% }); %>
+        
+            <% }); %>
+        </div>
+        <div class="add_note">
+            <a href="/add_note">ノートを追加</a>
+        </div>
     </div>
 
-
-        <a href="/add_note">ノートを追加</a>
-
-
+    <div class="footer">
+        Oboeru
+    </div>
 
 </body>
 

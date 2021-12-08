@@ -1,0 +1,34 @@
+body {
+    margin: 0;
+}
+
+.header {
+    color: white;
+}
+
+.main {
+    background-color: #ebbb7caf;
+    height: 800px;
+}
+
+h1 {
+    background-color: #833705;
+    padding: 30px;
+    text-align: center;
+    margin: 0;
+}
+
+.note {
+    float: left;
+}
+
+.add_note {
+    clear: left;
+}
+
+.footer {
+    background: #833705;
+    color: white;
+    height: 100px;
+    text-align: right;
+}
