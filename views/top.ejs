@@ -1,27 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oboeru</title>
+    <link rel="stylesheet" href="/css/index.css">
+</head>
 
-<%- include('partials/header'); %>
+<body>
 
-<div class="header">
-    <h1>Oboeru</h1>
-</div>
+    <div class="header">
+        <h1>Oboeru</h1>
+    </div>
 
-<% note.forEach((list) => {%>
-    <p><a href="/front/<%=list.Tables_in_oboeru%>"><%=list.Tables_in_oboeru%></a></p>
-    <span>
+    <div class="container">
+        <% note.forEach((list) => {%>
+            
+        <p><a href="/front/<%=list.Tables_in_oboeru%>"><%=list.Tables_in_oboeru%></a></p>
+        
+        
         <form action="/change_name/<%=list.Tables_in_oboeru%>">
             <input type="submit", value="名前変更">
         </form>
+        
         <form action="/delete_note/<%=list.Tables_in_oboeru%>">
             <input type="submit", value="削除">
         </form>
-    </span>
-    
-<% }); %>
+           
+        
+        <% }); %>
+    </div>
 
 
-    <a href="/add_note">ノートを追加</a>
+        <a href="/add_note">ノートを追加</a>
 
 
 
-<%- include('partials/footer'); %>
+</body>
+
+</html>
 
