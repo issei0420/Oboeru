@@ -6,15 +6,20 @@ body {
     color: white;
 }
 
+.title {
+    font-size: 20px;
+    text-align: center;
+}
+
 .main {
     background-color: #ebbb7caf;
-    height: 800px;
+    height: 900px;
 }
 
 h1 {
     background-color: #833705;
     padding: 30px;
-    text-align: center;
+    text-align: left;
     margin: 0;
 }
 
@@ -27,9 +32,9 @@ h1 {
     clear: left;
 }
 
-.footer {
+/* .footer {
     background: #833705;
     color: white;
     height: 100px;
     text-align: right;
-}
+} */

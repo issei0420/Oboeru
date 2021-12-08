@@ -1,28 +1,34 @@
 <%- include('partials/header');%>
 
-    <div class="main">
-        <div class="container">
-            <% note.forEach((list) => {%>
-        
-            <div class="note">
-                <p><a href="/front/<%=list.Tables_in_oboeru%>"><%=list.Tables_in_oboeru%></a></p>
-        
-        
-                <form action="/change_name/<%=list.Tables_in_oboeru%>">
-                    <input type="submit", value="名前変更">
-                </form>
-        
-                <form action="/delete_note/<%=list.Tables_in_oboeru%>">
-                    <input type="submit", value="削除">
-                </form>
-            </div>
-        
-        
-            <% }); %>
-        </div>
-        <div class="add_note">
-            <a href="/add_note">ノートを追加</a>
-        </div>
+<div class="main">
+
+    <div class="title">
+        ノート一覧
     </div>
 
-<%- include('partials/footer');%>
+    <div class="container">
+        <% note.forEach((list) => {%>
+    
+        <div class="note">
+            <p><a href="/front/<%=list.Tables_in_oboeru%>"><%=list.Tables_in_oboeru%></a></p>
+    
+    
+            <form action="/change_name/<%=list.Tables_in_oboeru%>">
+                <input type="submit", value="名前変更">
+            </form>
+    
+            <form action="/delete_note/<%=list.Tables_in_oboeru%>">
+                <input type="submit", value="削除">
+            </form>
+        </div>
+    
+    
+        <% }); %>
+    </div>
+    <div class="add_note">
+        <a href="/add_note">ノートを追加</a>
+    </div>
+
+</div>
+
+<!-- <%- include('partials/footer');%> -->
