@@ -1,20 +1,13 @@
-<!DOCTYPE html>
-<html lang="ja">
-  <head>
-    <meta charset="utf-8">
-    <title>LIST APP</title>
-    <link rel="stylesheet" href="/css/style.css">
-    <script src="/send_url.js"></script>
-  </head>
-  <body>
-    <form action="/update/<%=word.id%>/<%=word%>", method="post">
-        <p><input type="text" name="questionName" value="<%=word.question%>"></p>
-        <p><input type="text" name="answereName" value="<%=word.answere%>"></p>
-        <p><input type="submit" value="更新する"></p>
-    </form>
-    
-    <a href="/front/<%=word%>">
-        表紙へ
-    </a>
-  </body>
-</html>
+<%- include('partials/header'); %>
+
+  <form action="/update/<%=word.id%>/<%=word%>", method="post">
+      <p><input type="text" name="questionName" value="<%=word.question%>"></p>
+      <p><input type="text" name="answereName" value="<%=word.answere%>"></p>
+      <p><input type="submit" value="更新する"></p>
+  </form>
+  
+  <a href="/front/<%=word%>">
+      表紙へ
+  </a>
+
+<%- include('partials/footer'); %>

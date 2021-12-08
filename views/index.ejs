@@ -1,35 +1,27 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>index</h1>
-  <% list.forEach((word) => { %>
-    <ul>
-        <li>
-            <span><%= word.question%></span>
-            <span><%= word.answere%></span>
-            <form action="/delete/<%=word.id%>/<%=list_name%>", method="post">
-                <input type="submit", value="削除">
-            </form>
+<%- include('partials/header'); %>
 
-            <a href="/edit/<%=word.id%>/<%=list_name%>">編集</a>
-        </li>
-    </ul>
+<h1>index</h1>
+<% list.forEach((word) => { %>
+<ul>
+    <li>
+        <span><%= word.question%></span>
+        <span><%= word.answere%></span>
+        <form action="/delete/<%=word.id%>/<%=list_name%>", method="post">
+            <input type="submit", value="削除">
+        </form>
 
- <% }); %>
+        <a href="/edit/<%=word.id%>/<%=list_name%>">編集</a>
+    </li>
+</ul>
 
-    <a href="/front/<%=list_name%>">
-        表紙へ
-    </a>
+<% }); %>
+
+<a href="/front/<%=list_name%>">
+    表紙へ
+</a>
 
     
-</body>
-</html>
+<%- include('partials/footer'); %>
 
 
 

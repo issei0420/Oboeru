@@ -1,29 +1,22 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>add</h1>
+<%- include('partials/header'); %>
 
-    <form action="/add_word/<%=list%>", method="post">
-        <p>
-            <input type="text", name='questionName'>
-        </p>
-        <p>
-            <input type="text", name='answereName'>
-        </p>
-        <p>
-            <input type="submit", value="追加">
-        </p>
+<h1>add</h1>
 
-    </form>
-    
-    <a href="/front/<%=list%>">
-        表紙へ
+<form action="/add_word/<%=list%>", method="post">
+    <p>
+        <input type="text", name='questionName'>
+    </p>
+    <p>
+        <input type="text", name='answereName'>
+    </p>
+    <p>
+        <input type="submit", value="追加">
+    </p>
+
+</form>
+
+<a href="/front/<%=list%>">
+    表紙へ
     </a>
-</body>
-</html>
+
+<%- include('partials/footer'); %>

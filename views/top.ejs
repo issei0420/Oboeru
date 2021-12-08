@@ -1,26 +1,24 @@
 
 <%- include('partials/header'); %>
 
-<body>
-    <h1>Oboeru</h1>
+<h1>Oboeru</h1>
 
-    <% note.forEach((list) => {%>
-        <p><a href="/front/<%=list.Tables_in_oboeru%>"><%=list.Tables_in_oboeru%></a></p>
-        <span>
-            <form action="/change_name/<%=list.Tables_in_oboeru%>">
-                <input type="submit", value="名前変更">
-            </form>
-            <form action="/delete_note/<%=list.Tables_in_oboeru%>">
-                <input type="submit", value="削除">
-            </form>
-        </span>
-        
-    <% }); %>
+<% note.forEach((list) => {%>
+    <p><a href="/front/<%=list.Tables_in_oboeru%>"><%=list.Tables_in_oboeru%></a></p>
+    <span>
+        <form action="/change_name/<%=list.Tables_in_oboeru%>">
+            <input type="submit", value="名前変更">
+        </form>
+        <form action="/delete_note/<%=list.Tables_in_oboeru%>">
+            <input type="submit", value="削除">
+        </form>
+    </span>
     
-    
-        <a href="/add_note">ノートを追加</a>
+<% }); %>
 
-</body>
+
+    <a href="/add_note">ノートを追加</a>
+
 
 
 <%- include('partials/footer'); %>
