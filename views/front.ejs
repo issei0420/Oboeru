@@ -1,17 +1,19 @@
 <%- include('partials/header'); %>
 
+<link rel="stylesheet" href="/css/front.css" type="text/css">
+
 <div class="main">
     
     <div class="title">
         <%=list%>
     </div>
     
-    <a href="/index/<%=list%>">一覧</a>
-    <a href="/test/<%=list%>">テスト</a>
-    <a href="/add/<%=list%>">追加</a>
+    <div class="element1"><a href="/index/<%=list%>">一覧</a></div>
+    <div class="element2"><a href="/test/<%=list%>">テスト</a></div>
+    <div class="element3"><a href="/add/<%=list%>">追加</a></div>
     
     <p>
-        <a href="/">トップへ</a>
+        <a href="/">ノート一覧</a>
     </p>
 </div>
     

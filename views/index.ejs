@@ -1,24 +1,32 @@
 <%- include('partials/header'); %>
 
-<h1>index</h1>
-<% list.forEach((word) => { %>
-<ul>
-    <li>
-        <span><%= word.question%></span>
-        <span><%= word.answere%></span>
-        <form action="/delete/<%=word.id%>/<%=list_name%>", method="post">
-            <input type="submit", value="削除">
-        </form>
+<link rel="stylesheet" href="/css/front.css" type="text/css">
 
-        <a href="/edit/<%=word.id%>/<%=list_name%>">編集</a>
-    </li>
-</ul>
+<div class="main">
 
-<% }); %>
+    <div class="title">
+        一覧
+    </div>
 
-<a href="/front/<%=list_name%>">
-    表紙へ
-</a>
+    <% list.forEach((word) => { %>
+    <ul>
+        <li>
+            <span><%= word.question%></span>
+            <span><%= word.answere%></span>
+            <form action="/delete/<%=word.id%>/<%=list_name%>", method="post">
+                <input type="submit", value="削除">
+            </form>
+            <a href="/edit/<%=word.id%>/<%=list_name%>">編集</a>
+        </li>
+    </ul>
+    
+    <% }); %>
+    
+    <a href="/front/<%=list_name%>">
+        表紙へ
+    </a>
+</div>
+
 
     
 <%- include('partials/footer'); %>
