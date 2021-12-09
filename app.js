@@ -165,7 +165,7 @@ app.get('/test/:listName', (req, res) => {
                 counter += 1;
             }else{
                 res.render('front.ejs', {list: req.params.listName});
-                counter = 0;
+                counter = 1;
             }
         }
     );
