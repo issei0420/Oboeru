@@ -1,14 +1,26 @@
 <%- include('partials/header'); %>
 
+<link rel="stylesheet" href="/css/test.css" type="text/css">
 
-<h1>test</h1>
+<div class="main">
+    <div class="title">
+        テスト
+    </div>
+    
+    <div class="content">
+        <div class="question">
+            <p><%=word.question%></p>
+        </div>
 
-<p><%=word.question%></p>
-<p><%=word.answere%></p>
-
-<p><a href="/test/<%=list%>">次へ</a></p>
-<a href="/front/<%=list%>">
-    表紙へ
-</a>
+        <div class="answere">
+            <p><%=word.answere%></p>
+        </div>
+    </div>
+    
+    <p><a href="/test/<%=list%>">次へ</a></p>
+    <a href="/front/<%=list%>">
+        表紙へ
+    </a>
+</div>
 
 <%- include('partials/footer'); %>
