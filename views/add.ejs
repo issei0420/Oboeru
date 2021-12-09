@@ -1,22 +1,40 @@
 <%- include('partials/header'); %>
 
-<h1>add</h1>
+<link rel="stylesheet" href="/css/add_word.css" type="text/css">
 
-<form action="/add_word/<%=list%>", method="post">
-    <p>
-        <input type="text", name='questionName'>
-    </p>
-    <p>
-        <input type="text", name='answereName'>
-    </p>
-    <p>
-        <input type="submit", value="追加">
-    </p>
+<div class="main">
 
-</form>
+    <div class="title">
+        追加
+    </div>
 
-<a href="/front/<%=list%>">
-    表紙へ
-    </a>
+    <div class="form">
+        <form action="/add_word/<%=list%>", method="post">
+            <div class="question">
+                <p>問題</p>
+                <p>
+                    <input type="text", name='questionName'>
+                </p>
+            </div>
 
-<%- include('partials/footer'); %>
+            <div class="answere">
+                <p>答え</p>
+                <p>
+                    <input type="text", name='answereName'>
+                </p>
+                <p>
+                    <input type="submit", value="追加">
+                </p>
+            </div>
+        
+        </form>
+    </div>
+
+    <div class=link>
+        <a href="/front/<%=list%>">
+            表紙へ
+        </a>
+    </div>
+
+</div>
+
