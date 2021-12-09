@@ -78,8 +78,6 @@ app.get('/index/:listName', (req, res) => {
         'select * from ??',
         [req.params.listName],
         (error, results) => {
-            console.log(req.params.listName)
-            console.log(results);
             res.render('index.ejs', {list: results, list_name: req.params.listName});
         }
     )
@@ -109,9 +107,16 @@ app.post('/delete/:id/:listName', (req, res) => {
         'delete from ?? where id = ?',
         [req.params.listName, req.params.id],
         (error, results) => {
-            res.redirect('/index/:listname');
         }
     );
+
+    connection.query(
+        'select * from ??',
+        [req.params.listName],
+        (error, results) => {
+            res.render('index.ejs', {list: results, list_name: req.params.listName});
+        }
+    )
 });
 
 // 編集画面表示
