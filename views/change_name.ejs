@@ -1,11 +1,15 @@
 <%- include('partials/header'); %>
 
-<h1>change name</h1>
+<link rel="stylesheet" href="/css/note_name.css" type="text/css">
 
-<form action="/change_function/<%=name%>", method="post">
-    <input type="text", name='newName' value=<%=name%>>
-    <input type="submit", value="更新する">
-
-</form>
+<div class="main">
+    <div class="form">
+        <form action="/change_function/<%=name%>", method="post">
+            <input type="text", name='newName' value=<%=name%>>
+            <input type="submit", value="変更">
+        
+        </form>
+    </div>
+</div>
 
 <%- include('partials/footer'); %>
