@@ -1,5 +1,6 @@
 <%- include('partials/header'); %>
 
+<div class="main">
   <form action="/update/<%=word.id%>/<%=word%>", method="post">
       <p><input type="text" name="questionName" value="<%=word.question%>"></p>
       <p><input type="text" name="answereName" value="<%=word.answere%>"></p>
@@ -9,5 +10,6 @@
   <a href="/front/<%=word%>">
       表紙へ
   </a>
+</div>
 
 <%- include('partials/footer'); %>
