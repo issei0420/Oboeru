@@ -3,6 +3,7 @@
 <link rel="stylesheet" href="/css/test.css" type="text/css">
 
 <div class="main">
+    
     <div class="title">
         テスト
     </div>
@@ -12,15 +13,19 @@
             ＜問題＞
         </div>
 
-        <div class="question">
+        <div class="index">
             <p><%=word.question%></p>
         </div>
     </div>
     
-    <p><a href="/test_answere/<%=list%>">答えを見る</a></p>
-    <a href="/front/<%=list%>">
-        表紙へ
-    </a>
+    <p class="next"><a href="/test_answere/<%=list%>">答えを見る</a></p>
+    
+    <div class="link">
+        <a href="/front/<%=list%>">
+            表紙へ
+        </a>
+    </div>
+
 </div>
 
 <%- include('partials/footer'); %>
