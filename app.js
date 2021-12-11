@@ -142,12 +142,10 @@ app.post('/update/:id/:listName', (req, res) => {
       );
 })
 
-//テスト機能
+//テスト（問題）
 let counter = 1;
 app.get('/test/:listName', (req, res) => {
     let length;
-
-
     connection.query(
         'select count(question) from ??',
         [req.params.listName],
@@ -162,15 +160,29 @@ app.get('/test/:listName', (req, res) => {
         (error, results) => {
             if(counter<=length){
                 res.render('test.ejs', {word: results[0], list: req.params.listName});
-                counter += 1;
             }else{
                 res.render('front.ejs', {list: req.params.listName});
                 counter = 1;
             }
         }
-    );
-
-    
+    );   
 });
+
+//テスト機能(答え)
+app.get('/test_answere/:listName', (req, res) => {
+
+    connection.query(
+        'select * from ?? limit ?, ?',
+        [req.params.listName, counter-1, counter],
+        (error, results) => {
+                res.render('answere.ejs', {word: results[0], list: req.params.listName});
+                counter += 1;
+            }
+    );   
+});
+
+
+
+
 
 app.listen(3000);
