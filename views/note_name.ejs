@@ -1,8 +1,14 @@
 <%- include('partials/header'); %>
 
-<form action="/add_function", method="post">
-    <input type="text", name=listName>
-    <input type="submit", value="追加する">
-</form>
+<link rel="stylesheet" href="/css/note_name.css" type="text/css">
+
+<div class="main">
+    <div class="directon">ノートの名前を入力してください</div>
+    
+    <form action="/add_function", method="post">
+        <input type="text", name=listName>
+        <input type="submit", value="追加する">
+    </form>
+</div>
 
 <%- include('partials/footer'); %>
