@@ -1,3 +1,3 @@
 # Oboeru
 # Vocaburary Notebook
-# function: quiz / multiple notebooks
+# function: quiz, multiple notebooks
