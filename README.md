@@ -1,4 +1,4 @@
 # Oboeru
 # Node.js / MySQL
-# Vocaburary Notebook
-# function: quiz, multiple notebooks
+# It is an Vocaburary Notebook app
+# Function: quiz, multiple notebooks
